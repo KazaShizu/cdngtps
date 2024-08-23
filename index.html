@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDN Server</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+        #terminal {
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: .15em solid #00ff00;
+            font-weight: bold;
+        }
+        .cursor {
+            animation: blink-caret 0.75s step-end infinite;
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #00ff00; }
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal">
+        <span id="text"></span><span class="cursor">|</span>
+    </div>
+    <script>
+        const textElement = document.getElementById('text');
+        const text = `Hello There :D`;
+        let index = 0;
+        
+        function type() {
+            if (index < text.length) {
+                textElement.textContent += text.charAt(index);
+                index++;
+                setTimeout(type, 100);
+            }
+        }
+        
+        type();
+    </script>
+</body>
+</html>
